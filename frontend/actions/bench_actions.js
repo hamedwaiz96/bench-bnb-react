@@ -8,6 +8,6 @@ export const receiveAllBenches = (benches) => ({
     benches
 });
 
-export const fetchBenches = () => dispatch => (
-    APIUtil.fetchBenches().then((benches) => dispatch(receiveAllBenches(benches)))
+export const fetchBenches = (filter) => dispatch => (
+    APIUtil.fetchBenches(filter).then(benches => {return (dispatch(receiveAllBenches(benches)))})
 );
