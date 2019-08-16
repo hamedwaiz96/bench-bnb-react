@@ -28,10 +28,25 @@ class BenchMap extends React.Component {
             }
             self.props.updateBounds('bounds', bounds);
         })
+        google.maps.event.addListener(this.map, 'click', (e) => {
+            self._handleClick(e.latLng)
+        })
+
     }
 
     componentDidUpdate(){
         this.MarkerManager.updateMarkers(this.props.benches);
+    }
+
+    _handleClick(coords){
+        let coordss = {
+            lat: coords.lat(),
+            lng: coords.lng()
+        };
+        this.props.history.push({
+            pathname: 'benches/new',
+            search: `lat=${coordss.lat}&lng=${coordss.lng}`
+        });
     }
 
     render(){
