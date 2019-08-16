@@ -1,5 +1,6 @@
 import React from 'react';
 import MarkerManager from '../util/marker_manager';
+import {withRouter} from 'react-router-dom';
 
 class BenchMap extends React.Component {
     constructor(props){
@@ -25,7 +26,7 @@ class BenchMap extends React.Component {
                 northEast: { lat: north, lng: east },
                 southWest: { lat: south, lng: west }
             }
-            self.props.updatebounds(bounds);
+            self.props.updateBounds('bounds', bounds);
         })
     }
 
@@ -42,4 +43,4 @@ class BenchMap extends React.Component {
     }
 }
 
-export default BenchMap;
+export default withRouter(BenchMap);

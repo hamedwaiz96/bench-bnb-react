@@ -1,15 +1,14 @@
 import {connect} from 'react-redux';
 import Search from './search';
-import {fetchBenches} from '../actions/bench_actions';
 import getBenches from './selector';
+import {updateBounds} from '../actions/filter_actions';
 
 const mapStateToProps = state => ({
     benches: getBenches(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchBenches: (filter) => dispatch(fetchBenches(filter)),
-    updateBounds: (bounds) => dispatch(updateBounds(bounds))
+    updateBounds: (filter, value) => dispatch(updateBounds(filter, value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

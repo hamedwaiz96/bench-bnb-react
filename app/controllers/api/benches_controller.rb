@@ -5,12 +5,17 @@ class Api::BenchesController < ApplicationController
     end
 
     def create
-
+        @bench = Bench.new(bench_params)
+        if @bench.save
+            render 'api/benches/show.json.jbuilder'
+        else
+            render json: @bench.errors.full_messages, status: 422
+        end
     end
 
     def show
-        @bench = Bench.new(bench_params)
-        if @bench.save
+        @bench = Bench.find(params[:id])
+        if @bench
             render 'api/benches/show.json.jbuilder'
         else
             render json: @bench.errors.full_messages, status: 422

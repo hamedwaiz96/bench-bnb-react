@@ -6,14 +6,6 @@ class BenchIndex extends React.Component {
         super(props);
     }
 
-    componentDidMount(){
-        let filter_test = {
-            "northEast": { "lat": "37.80971", "lng": "-122.39208" },
-            "southWest": { "lat": "37.74187", "lng": "-122.47791" }
-    }
-        this.props.fetchBenches(filter_test);    
-    }
-
     render(){
         return(
             <ul>
