@@ -5,5 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-bench1 = Bench.create(:description => 'Hello', :lat => 38, :lng => -123)
-bench2 = Bench.create(:description => "Hello again", :lat => 37.76, :lng => -122.40)
+Bench.destroy_all
+bench1 = Bench.create(:description => "ehhlo", :lat => 37.76, :lng => -122.3, :seating => 3)

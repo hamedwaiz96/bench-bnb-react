@@ -7,6 +7,7 @@ export const changeFilter = (filter, value) => ({
     value
 });
 
+
 export const updateBounds = (filter, value) => (dispatch, getState) => {
     dispatch(changeFilter(filter, value));
     return fetchBenches(getState().ui.filters)(dispatch);

@@ -1,10 +1,10 @@
 class Bench < ApplicationRecord
     validates :lat, :lng, presence: true
 
-    def self.in_bounds(bounds)
-        self.where("lat < ?", bounds[:northEast][:lat])
-            .where("lat > ?", bounds[:southWest][:lat])
-            .where("lng > ?", bounds[:southWest][:lng])
-            .where("lng < ?", bounds[:northEast][:lng])
+    def self.in_bounds(params)
+        self.where("lat < ?", params[:bounds][:northEast][:lat])
+            .where("lat > ?", params[:bounds][:southWest][:lat])
+            .where("lng > ?", params[:bounds][:southWest][:lng])
+            .where("lng < ?", params[:bounds][:northEast][:lng])
     end
 end

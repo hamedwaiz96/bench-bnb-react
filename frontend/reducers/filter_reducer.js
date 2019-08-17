@@ -1,7 +1,13 @@
 import {UPDATE_BOUNDS} from '../actions/filter_actions';
 import merge from 'lodash/merge';
 
-const filterReducer = (state={}, action) => {
+const _nullState = {
+    bounds: {},
+    minSeating: 1,
+    maxSeating: 10
+}
+
+const filterReducer = (state=_nullState, action) => {
     switch(action.type){
         case(UPDATE_BOUNDS):
             let newFilter = {

@@ -1,6 +1,9 @@
 class Api::BenchesController < ApplicationController
     def index
-        @benches = params[:bounds] ? Bench.in_bounds(params[:bounds]) : Bench.all
+        @benches = params[:bounds] ? Bench.in_bounds(params) : Bench.all
+        if params[:maxSeating] && params[:minSeating]
+            @benches = @benches.where("seating >= ? AND seating <= ?", params[:minSeating], params[:maxSeating])
+        end
         render "api/benches/index.json.jbuilder"
     end
 
@@ -23,6 +26,6 @@ class Api::BenchesController < ApplicationController
     end
 
     def bench_params
-        params.require(:bench).permit(:description, :lat, :lng)
+        params.require(:bench).permit(:description, :lat, :lng, :max_seating, :min_seating)
     end
 end
