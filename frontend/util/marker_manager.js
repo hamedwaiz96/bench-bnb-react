@@ -27,6 +27,6 @@ export default class MarkerManager {
 
     removeMarker(marker){
         this.markers[marker.benchId].setMap(null);
-        delete this.markers.marker.benchId
+        delete this.markers[marker.benchId];
     }
 }
