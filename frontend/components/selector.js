@@ -1,5 +1,14 @@
-const getBenches = (state) => {
+export const getBenches = (state) => {
     return Object.values(state.entities.benches)
 }
 
-export default getBenches;
+export const getBench = (benches, id) => {
+    let benches_arr = Object.values(benches);
+    let actual_bench = [];
+    benches_arr.map(bench => {
+        if(bench.id === id){
+            actual_bench.push(bench);
+        }
+    });
+    return actual_bench;
+}

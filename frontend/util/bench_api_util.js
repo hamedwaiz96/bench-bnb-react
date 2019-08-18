@@ -5,7 +5,7 @@ export const fetchBenches = (filter) => (
         data: filter,
         error: (err) => console.log(err)
     })
-)
+);
 
 export const createBench = (bench) => (
     $.ajax({
@@ -13,4 +13,11 @@ export const createBench = (bench) => (
         method: "POST",
         data: {bench}
     })
-)
+);
+
+export const fetchBench = (id) => (
+    $.ajax({
+        url: `/api/benches/${id}`,
+        method: "GET"
+    })
+);

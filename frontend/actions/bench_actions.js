@@ -18,6 +18,10 @@ export const fetchBenches = (filter) => dispatch => (
     APIUtil.fetchBenches(filter).then(benches => {return (dispatch(receiveAllBenches(benches)))})
 );
 
+export const fetchBench = (id) => dispatch => (
+    APIUtil.fetchBench(id).then(bench => dispatch(receiveBench(bench)))
+);
+
 export const createBench = (bench) => dispatch => (
     APIUtil.createBench(bench).then((bench) => dispatch(receiveBench(bench)))
 );
