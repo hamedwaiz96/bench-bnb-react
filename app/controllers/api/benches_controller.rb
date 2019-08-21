@@ -1,4 +1,6 @@
 class Api::BenchesController < ApplicationController
+    before_action :require_logged_in, only: [:create]
+
     def index
         @benches = params[:bounds] ? Bench.in_bounds(params) : Bench.all
         if params[:maxSeating] && params[:minSeating]
@@ -18,6 +20,7 @@ class Api::BenchesController < ApplicationController
 
     def show
         @bench = Bench.find(params[:id])
+        @reviews = Review.where("bench_id = ?", params[:id])
         if @bench
             render 'api/benches/show.json.jbuilder'
         else

@@ -9,9 +9,10 @@ export const receiveAllBenches = (benches) => ({
     benches
 });
 
-export const receiveBench = (bench) => ({
+export const receiveBench = ({bench, reviews}) => ({
     type: RECEIVE_BENCH,
-    bench
+    bench,
+    reviews
 });
 
 export const fetchBenches = (filter) => dispatch => (

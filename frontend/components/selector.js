@@ -12,3 +12,7 @@ export const getBench = (benches, id) => {
     });
     return actual_bench;
 }
+
+export const getReviews = (reviews) => {
+    return Object.values(reviews);
+}

@@ -17,6 +17,10 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
+    updatekey(key){
+        return e => this.setState({[key]: e.target.value})
+    }
+
     render(){
         return(
             <div>
@@ -32,11 +36,11 @@ class SessionForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Username: 
-                        <input type="text" placeholder="username" />
+                        <input type="text" placeholder="username" value={this.state.username} onChange={this.updatekey("username")} />
                         </label>
                     <label>
                         Password:
-                        <input type="password" placeholder="password" />
+                        <input type="password" placeholder="password" value={this.state.password} onChange={this.updatekey("password")} />
                     </label>
                     <input type="submit" value={this.props.formType === 'signup' ? "Sign Up" : "Log in"}/>
                 </form>
